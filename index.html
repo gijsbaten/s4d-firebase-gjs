@@ -18,9 +18,9 @@
 <body>
   <div id="blok">
     <input type="text" id="typeBlok">
-    <div id="textDiv"></div>
-    <button class="btn" id="btnRood">Maak rood</button>
-    <button class="btn" id="btnOranje">Maak oranje</button>
+    <div id="tekstDiv">Test Hallo</div>
+    <button class="knop" id="roodKnop">Maak Rood</button>
+    <button class="knop" id="groenKnop">Maak Groen</button>
   </div>
 
   <script src="https://www.gstatic.com/firebasejs/4.5.1/firebase.js"></script>
@@ -38,36 +38,35 @@
   var database = firebase.database();
 </script>
 
-<script>
-  var kleurReference = database.ref("blok/kleur");
-  var tekstReference = database.ref("blok/tekst");
-  var deTekst = ''
-
-  document.getElementById("btnRood").onclick = klikRood
-  document.getElementById("btnOranje").onclick = klikOranje
-  document.getElementById("typeBlok").onkeyup = editText
-
-  function klikRood() {
-    kleurReference.set("red")
-  }
-
-  function klikOranje() {
-    kleurReference.set("orange")
-  }
-
-  function editText() {
-    tekstReference.set(document.getElementById("typeBlok").value)
-  }
-
-  kleurReference.on('value', function(data){
-    document.getElementById("blok").style.backgroundColor = data.val()
-  })
-
-  tekstReference.on('value', function(data){
-    document.getElementById("textDiv").innerHTML = data.val()
-    deTekst = data.val()
-  })
-
-</script>
+  <script>
+    var kleurReference = database.ref("blok/kleur")
+    var tekstReference = database.ref("blok/tekst")
+    
+    document.getElementById("roodKnop").onclick = klikRood
+    document.getElementById("groenKnop").onclick = klikGroen
+    document.getElementById("typeBlok").onkeyup = editText
+    
+    
+    function klikRood() {
+      kleurReference.set("red")
+    }
+    
+    function klikGroen() {
+      kleurReference.set("green")
+    }
+    
+    function editText() {
+      tekstReference.set(document.getElementById("typeBlok").value)
+    }
+    
+    kleurReference.on('value', function(data) {
+      document.getElementById("blok").style.backgroundColor = data.val()
+    });
+    
+    tekstReference.on('value', function(data) {
+      document.getElementById("tekstDiv").innerHTML = data.val()
+    });
+    
+  </script>
 </body>
 </html>
