@@ -19,8 +19,8 @@
   <div id="blok">
     <input type="text" id="typeBlok">
     <div id="textDiv"></div>
-    <button class="btn" id="btnRood">Rood</button>
-    <button class="btn" id="btnOranje">Oranje</button>
+    <button class="btn" id="btnRood">Maak rood</button>
+    <button class="btn" id="btnOranje">Maak oranje</button>
   </div>
 
   <script src="https://www.gstatic.com/firebasejs/4.5.1/firebase.js"></script>
@@ -45,7 +45,7 @@
 
   document.getElementById("btnRood").onclick = klikRood
   document.getElementById("btnOranje").onclick = klikOranje
-  document.getElementById("typeBlok").onclick = editText
+  document.getElementById("typeBlok").onkeyup = editText
 
   function klikRood() {
     kleurReference.set("red")
