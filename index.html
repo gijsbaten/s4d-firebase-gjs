@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Firebase: Mijn eerste startup </title>
+  <meta name="description" content="Mijn eerste startup met Firebase">
+  <meta name="author" content="Gijs Baten">
+
+  <style>
+    #blok { margin: 50px 25px; }
+    #typeBlok { height: 50px; width: 50%; max-width: 350px; margin-bottom: 25px; padding: 0 20px; font-size: 1.5em; color: #333; border: 2px solid #CCC; border-radius: 50px; box-shadow: 0 2px 2px 0 #EEE; outline: none; }
+    #typeBlok:active,
+    #typeBlok:focus { border: 2px solid #0043FF; box-shadow: 0 0px 4px 0 #0043FF; }
+    .btn { height: 50px; width: 100px; border-radius: 10px; outline: none; }
+  </style>
+</head>
+
+<body>
+  <div id="blok">
+    <input type="text" id="typeBlok">
+    <div id="textDiv"></div>
+    <button class="btn" id="btnRood">Rood</button>
+    <button class="btn" id="btnOranje">Oranje</button>
+  </div>
+
+  <script src="https://www.gstatic.com/firebasejs/4.5.1/firebase.js"></script>
+  <script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCcqDtiPXK4zNk3Q1oFT7Db3MEc1e-qKKM",
+    authDomain: "eerste-startup.firebaseapp.com",
+    databaseURL: "https://eerste-startup.firebaseio.com",
+    projectId: "eerste-startup",
+    storageBucket: "",
+    messagingSenderId: "90629334333"
+  };
+  firebase.initializeApp(config);
+  var database = firebase.database();
+</script>
+
+<script>
+  var kleurReference = database.ref("vlak/kleur");
+</script>
+</body>
+</html>
+
