@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Firebase: Mijn eerste startup</title>
+  <title>Firebase: Mijn eerste startup </title>
   <meta name="description" content="Mijn eerste startup met Firebase">
   <meta name="author" content="Gijs Baten">
 
@@ -39,8 +39,35 @@
 </script>
 
 <script>
-  var kleurReference = database.ref("vlak/kleur");
+  var kleurReference = database.ref("blok/kleur");
+  var tekstReference = database.ref("blok/tekst");
+  var deTekst = ''
+
+  document.getElementById("btnRood").onclick = klikRood
+  document.getElementById("btnOranje").onclick = klikOranje
+  document.getElementById("typeBlok").onclick = editText
+
+  function klikRood() {
+    kleurReference.set("red")
+  }
+
+  function klikOranje() {
+    kleurReference.set("orange")
+  }
+
+  function editText() {
+    tekstReference.set(document.getElementById("typeBlok").value)
+  }
+
+  kleurReference.on('value', function(data){
+    document.getElementById("blok").style.backgroundColor = data.val()
+  })
+
+  tekstReference.on('value', function(data){
+    document.getElementById("textDiv").innerHTML = data.val()
+    deTekst = data.val()
+  })
+
 </script>
 </body>
 </html>
-
