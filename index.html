@@ -1,81 +1,72 @@
-
-<html>
+<!doctype html>
+<html lang="en">
 <head>
+  <meta charset="utf-8">
+  <title>Firebase: Mijn eerste startup </title>
+  <meta name="description" content="Mijn eerste startup met Firebase">
+  <meta name="author" content="Gijs Baten">
+
+  <style>
+    #blok { margin: 50px 25px; }
+    #typeBlok { height: 50px; width: 50%; max-width: 350px; margin-bottom: 25px; padding: 0 20px; font-size: 1.5em; color: #333; border: 2px solid #CCC; border-radius: 50px; box-shadow: 0 2px 2px 0 #EEE; outline: none; }
+    #typeBlok:active,
+    #typeBlok:focus { border: 2px solid #0043FF; box-shadow: 0 0px 4px 0 #0043FF; }
+    .btn { height: 50px; width: 100px; border-radius: 10px; outline: none; }
+  </style>
 </head>
+
 <body>
-	<style>
-		#vlak {
-			width: 100%;
-			height: 100%;
-		}
-	</style>
-	<div id="vlak">
-		<input type="text" id="typeVlak">
-		<div id="tekstDiv">Test Hallo</div>
-		<button class="knop" id="roodKnop">Maak Rood</button>
-		<button class="knop" id="groenKnop">Maak Groen</button>
-	</div>
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
-		
-	<script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
-	<script>
-	  // Initialize Firebase
-	  var config = {
-	    apiKey: "AIzaSyD-7wf--_T5gDnSUaQEyWNanllETZf_Fj4",
-	    authDomain: "kleineprojects4d.firebaseapp.com",
-	    databaseURL: "https://kleineprojects4d.firebaseio.com",
-	    projectId: "kleineprojects4d",
-	    storageBucket: "kleineprojects4d.appspot.com",
-	    messagingSenderId: "433272950119"
-	  };
-	  firebase.initializeApp(config);
-	  // Get a reference to the database service
-	  var database = firebase.database();
-	</script>
-	
-	<script>
-		var kleurReference = database.ref("vlak/kleur")
-		var tekstReference = database.ref("vlak/tekst")
-		
-		document.getElementById("roodKnop").onclick = klikRood
-		document.getElementById("groenKnop").onclick = klikGroen
-		document.getElementById("typeVlak").onkeyup = editText
-		
-		
-		function klikRood() {
-			kleurReference.set("red")
-		}
-		
-		function klikGroen() {
-			kleurReference.set("green")
-		}
-		
-		function editText() {
-			tekstReference.set(document.getElementById("typeVlak").value)
-		}
-		
-		kleurReference.on('value', function(data) {
-			document.getElementById("vlak").style.backgroundColor = data.val()
-		});
-		
-		tekstReference.on('value', function(data) {
-			document.getElementById("tekstDiv").innerHTML = data.val()
-		});
-		
-		
-	</script>
- 
+  <div id="blok">
+    <input type="text" id="typeBlok">
+    <div id="tekstDiv">Test Hallo</div>
+    <button class="knop" id="roodKnop">Maak Rood</button>
+    <button class="knop" id="groenKnop">Maak Groen</button>
+  </div>
+
+
+  <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyCcqDtiPXK4zNk3Q1oFT7Db3MEc1e-qKKM",
+      authDomain: "eerste-startup.firebaseapp.com",
+      databaseURL: "https://eerste-startup.firebaseio.com",
+      projectId: "eerste-startup",
+      storageBucket: "eerste-startup.appspot.com",
+      messagingSenderId: "90629334333"
+    };
+    firebase.initializeApp(config);
+  </script>
+
+  <script>
+    var kleurReference = database.ref("blok/kleur")
+    var tekstReference = database.ref("blok/tekst")
+    
+    document.getElementById("roodKnop").onclick = klikRood
+    document.getElementById("groenKnop").onclick = klikGroen
+    document.getElementById("typeBlok").onkeyup = editText
+    
+    
+    function klikRood() {
+      kleurReference.set("red")
+    }
+    
+    function klikGroen() {
+      kleurReference.set("green")
+    }
+    
+    function editText() {
+      tekstReference.set(document.getElementById("typeBlok").value)
+    }
+    
+    kleurReference.on('value', function(data) {
+      document.getElementById("blok").style.backgroundColor = data.val()
+    });
+    
+    tekstReference.on('value', function(data) {
+      document.getElementById("tekstDiv").innerHTML = data.val()
+    });
+    
+  </script>
 </body>
 </html>
