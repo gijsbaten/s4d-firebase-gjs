@@ -15,7 +15,7 @@
   </style>
 </head>
 
-<body>
+<body id="body">
   <div id="blok">
     <input type="text" id="typeBlok">
     <div id="tekstDiv">Test Hallo</div>
@@ -62,7 +62,7 @@
     }
     
     kleurReference.on('value', function(data) {
-      document.getElementById("blok").style.backgroundColor = data.val()
+      document.getElementById("body").style.backgroundColor = data.val()
     });
     
     tekstReference.on('value', function(data) {
